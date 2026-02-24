@@ -18,9 +18,11 @@ async fn test_redirect_not_followed_by_default() {
         .await;
 
     let url = format!("{}/redirect", server.uri());
+    let tmp = tempfile::NamedTempFile::new().unwrap();
+    let tmp_path = tmp.path().to_str().unwrap().to_string();
     // Without -L, should NOT follow redirect and return 302
     let output = rurl()
-        .args(["-s", "-w", "%{http_code}", "-o", "/dev/null", &url])
+        .args(["-s", "-w", "%{http_code}", "-o", &tmp_path, &url])
         .output()
         .expect("failed to run rurl");
 
