@@ -1,6 +1,6 @@
 use assert_cmd::Command;
-use wiremock::{Mock, MockServer, ResponseTemplate};
 use wiremock::matchers::{header, method, path};
+use wiremock::{Mock, MockServer, ResponseTemplate};
 
 fn rurl() -> Command {
     Command::cargo_bin("rurl").expect("binary not found")
@@ -41,10 +41,7 @@ async fn test_post_request() {
         .expect("failed to run rurl");
 
     assert!(output.status.success());
-    assert_eq!(
-        String::from_utf8_lossy(&output.stdout).trim(),
-        "created"
-    );
+    assert_eq!(String::from_utf8_lossy(&output.stdout).trim(), "created");
 }
 
 #[tokio::test]
@@ -201,8 +198,10 @@ async fn test_write_out_http_code() {
         .await;
 
     let url = format!("{}/status", server.uri());
+    let tmp = tempfile::NamedTempFile::new().unwrap();
+    let tmp_path = tmp.path().to_str().unwrap().to_string();
     let output = rurl()
-        .args(["-s", "-w", "%{http_code}", "-o", "/dev/null", &url])
+        .args(["-s", "-w", "%{http_code}", "-o", &tmp_path, &url])
         .output()
         .expect("failed to run rurl");
 

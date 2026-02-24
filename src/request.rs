@@ -61,9 +61,7 @@ pub async fn build_request(client: &Client, args: &Args) -> Result<Request, Rurl
         let mime = mime_guess::from_path(upload_path)
             .first_or_octet_stream()
             .to_string();
-        builder = builder
-            .header(CONTENT_TYPE, mime.as_str())
-            .body(bytes);
+        builder = builder.header(CONTENT_TYPE, mime.as_str()).body(bytes);
     }
 
     // Cookie string
@@ -94,9 +92,9 @@ pub async fn build_request(client: &Client, args: &Args) -> Result<Request, Rurl
 
 /// Parse "Name: Value" header string
 pub fn parse_header(h: &str) -> Result<(HeaderName, HeaderValue), RurlError> {
-    let colon = h.find(':').ok_or_else(|| {
-        RurlError::InvalidHeader(format!("Header missing colon separator: {h}"))
-    })?;
+    let colon = h
+        .find(':')
+        .ok_or_else(|| RurlError::InvalidHeader(format!("Header missing colon separator: {h}")))?;
     let name = h[..colon].trim();
     let value = h[colon + 1..].trim();
 
@@ -119,9 +117,8 @@ fn parse_user_pass(s: &str) -> Result<(String, Option<String>), RurlError> {
 /// Read body data, expanding @file references
 fn read_body_data(data: &str) -> Result<Vec<u8>, RurlError> {
     if let Some(path) = data.strip_prefix('@') {
-        std::fs::read(path).map_err(|e| {
-            RurlError::Request(format!("Failed to read data file '{}': {e}", path))
-        })
+        std::fs::read(path)
+            .map_err(|e| RurlError::Request(format!("Failed to read data file '{}': {e}", path)))
     } else {
         Ok(data.as_bytes().to_vec())
     }
@@ -153,9 +150,9 @@ async fn build_multipart(form_args: &[String]) -> Result<multipart::Form, RurlEr
     let mut form = multipart::Form::new();
 
     for arg in form_args {
-        let eq = arg.find('=').ok_or_else(|| {
-            RurlError::Request(format!("Form field missing '=': {arg}"))
-        })?;
+        let eq = arg
+            .find('=')
+            .ok_or_else(|| RurlError::Request(format!("Form field missing '=': {arg}")))?;
         let name = arg[..eq].to_string();
         let value = &arg[eq + 1..];
 

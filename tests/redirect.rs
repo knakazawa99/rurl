@@ -1,6 +1,6 @@
 use assert_cmd::Command;
-use wiremock::{Mock, MockServer, ResponseTemplate};
 use wiremock::matchers::{method, path};
+use wiremock::{Mock, MockServer, ResponseTemplate};
 
 fn rurl() -> Command {
     Command::cargo_bin("rurl").expect("binary not found")
@@ -13,10 +13,7 @@ async fn test_redirect_not_followed_by_default() {
 
     Mock::given(method("GET"))
         .and(path("/redirect"))
-        .respond_with(
-            ResponseTemplate::new(302)
-                .insert_header("location", &target_url as &str),
-        )
+        .respond_with(ResponseTemplate::new(302).insert_header("location", &target_url as &str))
         .mount(&server)
         .await;
 
@@ -38,10 +35,7 @@ async fn test_redirect_followed_with_l_flag() {
 
     Mock::given(method("GET"))
         .and(path("/redirect"))
-        .respond_with(
-            ResponseTemplate::new(302)
-                .insert_header("location", &target_url as &str),
-        )
+        .respond_with(ResponseTemplate::new(302).insert_header("location", &target_url as &str))
         .mount(&server)
         .await;
 

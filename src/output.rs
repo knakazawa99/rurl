@@ -93,9 +93,7 @@ pub fn print_response_headers(resp: &Response) {
 /// Expand -w format string with response variables
 pub fn expand_write_out(format: &str, resp: &Response, _args: &Args) -> String {
     let status = resp.status();
-    let url = resp
-        .url()
-        .to_string();
+    let url = resp.url().to_string();
 
     let mut result = format.to_string();
 

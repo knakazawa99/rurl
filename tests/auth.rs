@@ -1,6 +1,6 @@
 use assert_cmd::Command;
-use wiremock::{Mock, MockServer, ResponseTemplate};
 use wiremock::matchers::{header, method, path};
+use wiremock::{Mock, MockServer, ResponseTemplate};
 
 fn rurl() -> Command {
     Command::cargo_bin("rurl").expect("binary not found")

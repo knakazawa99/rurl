@@ -1,6 +1,6 @@
 use assert_cmd::Command;
-use wiremock::{Mock, MockServer, ResponseTemplate};
 use wiremock::matchers::{method, path};
+use wiremock::{Mock, MockServer, ResponseTemplate};
 
 fn rurl() -> Command {
     Command::cargo_bin("rurl").expect("binary not found")
@@ -38,8 +38,10 @@ async fn test_write_out_url_effective() {
         .await;
 
     let url = format!("{}/url", server.uri());
+    let tmp = tempfile::NamedTempFile::new().unwrap();
+    let tmp_path = tmp.path().to_str().unwrap().to_string();
     let output = rurl()
-        .args(["-s", "-w", "%{url_effective}\\n", "-o", "/dev/null", &url])
+        .args(["-s", "-w", "%{url_effective}\\n", "-o", &tmp_path, &url])
         .output()
         .expect("failed to run rurl");
 

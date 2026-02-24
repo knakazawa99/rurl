@@ -43,10 +43,7 @@ async fn execute(args: &Args) -> Result<i32, error::RurlError> {
     }
 
     // Execute request
-    let resp = client
-        .execute(req)
-        .await
-        .map_err(error::RurlError::from)?;
+    let resp = client.execute(req).await.map_err(error::RurlError::from)?;
 
     // Handle response output
     response::handle_response(resp, args).await

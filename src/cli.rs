@@ -8,7 +8,6 @@ pub struct Args {
     pub url: String,
 
     // ── Request control ──────────────────────────────────────────────────
-
     /// HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)
     #[arg(short = 'X', long = "request", default_value = "GET")]
     pub method: String,
@@ -22,7 +21,6 @@ pub struct Args {
     pub head: bool,
 
     // ── Request body ─────────────────────────────────────────────────────
-
     /// Request body (prefix with @ to read from file: @filename)
     #[arg(short = 'd', long = "data", value_name = "DATA")]
     pub data: Option<String>,
@@ -44,7 +42,6 @@ pub struct Args {
     pub upload_file: Option<String>,
 
     // ── Output control ───────────────────────────────────────────────────
-
     /// Write response to file
     #[arg(short = 'o', long = "output", value_name = "FILE")]
     pub output: Option<String>,
@@ -70,7 +67,6 @@ pub struct Args {
     pub write_out: Option<String>,
 
     // ── Redirect ─────────────────────────────────────────────────────────
-
     /// Follow redirects
     #[arg(short = 'L', long = "location")]
     pub location: bool,
@@ -80,13 +76,11 @@ pub struct Args {
     pub max_redirs: u32,
 
     // ── Authentication ───────────────────────────────────────────────────
-
     /// Basic authentication (user:password)
     #[arg(short = 'u', long = "user", value_name = "USER:PASSWORD")]
     pub user: Option<String>,
 
     // ── Request headers ──────────────────────────────────────────────────
-
     /// User-Agent string
     #[arg(short = 'A', long = "user-agent", value_name = "STRING")]
     pub user_agent: Option<String>,
@@ -96,7 +90,6 @@ pub struct Args {
     pub referer: Option<String>,
 
     // ── TLS / Security ───────────────────────────────────────────────────
-
     /// Skip TLS certificate verification (insecure)
     #[arg(short = 'k', long = "insecure")]
     pub insecure: bool,
@@ -114,7 +107,6 @@ pub struct Args {
     pub key: Option<String>,
 
     // ── Timeouts ─────────────────────────────────────────────────────────
-
     /// Maximum time (seconds) for the entire operation
     #[arg(short = 'm', long = "max-time", value_name = "SECONDS")]
     pub max_time: Option<f64>,
@@ -124,13 +116,11 @@ pub struct Args {
     pub connect_timeout: Option<f64>,
 
     // ── Proxy ────────────────────────────────────────────────────────────
-
     /// HTTP/HTTPS proxy URL
     #[arg(short = 'x', long = "proxy", value_name = "URL")]
     pub proxy: Option<String>,
 
     // ── Cookies ──────────────────────────────────────────────────────────
-
     /// Send cookies from string or file
     #[arg(short = 'b', long = "cookie", value_name = "DATA")]
     pub cookie: Option<String>,
@@ -140,13 +130,11 @@ pub struct Args {
     pub cookie_jar: Option<String>,
 
     // ── Encoding ─────────────────────────────────────────────────────────
-
     /// Request compressed response
     #[arg(long = "compressed")]
     pub compressed: bool,
 
     // ── Query params (GET mode) ──────────────────────────────────────────
-
     /// Append --data to URL as query string
     #[arg(short = 'G', long = "get")]
     pub get_mode: bool,
