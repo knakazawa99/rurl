@@ -3,7 +3,6 @@
 A curl-compatible HTTP client written in pure Rust.
 
 [![CI](https://github.com/knakazawa99/rurl/actions/workflows/ci.yml/badge.svg)](https://github.com/knakazawa99/rurl/actions/workflows/ci.yml)
-[![Crates.io](https://img.shields.io/crates/v/rurl)](https://crates.io/crates/rurl)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Features
