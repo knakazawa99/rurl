@@ -2,7 +2,7 @@
 
 A curl-compatible HTTP client written in pure Rust.
 
-[![CI](https://github.com/kensukenakazawa/rurl/actions/workflows/ci.yml/badge.svg)](https://github.com/kensukenakazawa/rurl/actions/workflows/ci.yml)
+[![CI](https://github.com/knakazawa99/rurl/actions/workflows/ci.yml/badge.svg)](https://github.com/knakazawa99/rurl/actions/workflows/ci.yml)
 [![Crates.io](https://img.shields.io/crates/v/rurl)](https://crates.io/crates/rurl)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -23,7 +23,7 @@ cargo install rurl
 
 ### From GitHub Releases
 
-Download the pre-built binary for your platform from the [Releases page](https://github.com/kensukenakazawa/rurl/releases).
+Download the pre-built binary for your platform from the [Releases page](https://github.com/knakazawa99/rurl/releases).
 
 ### From source
 

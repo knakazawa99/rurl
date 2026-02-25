@@ -5,7 +5,7 @@ edition = "2021"
 rust-version = "1.75"
 description = "A curl-compatible HTTP client written in Rust"
 license = "MIT"
-repository = "https://github.com/kensukenakazawa/rurl"
+repository = "https://github.com/knakazawa99/rurl"
 keywords = ["curl", "http", "cli", "client"]
 categories = ["command-line-utilities", "web-programming::http-client"]
 
